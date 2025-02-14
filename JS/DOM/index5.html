@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <title>Class list</title>
+  <body>
+    <div id="box" class="red">I am a box</div>
+
+    <script>
+      const box = document.getElementById('box');
+
+      // Add a class
+      box.classList.add('green');
+
+      // Remove a class
+      box.classList.remove('red');
+
+      // Toggle a class
+      box.classList.toggle('blue');
+
+      // Check if a class exists
+      console.log(box.classList.contains('green')); // Outputs: true
+    </script>
+  </body>
+</html>

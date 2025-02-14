@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class</title>
+</head>
+<!--In web development, you can access elements by their class name using JavaScript's 
+document.getElementsByClassName method
+document.querySelectorAll -->
+
+<body>
+<div class="box">Box 1</div>
+<div class="box">Box 2</div>
+<div class="circle">Circle</div>
+
+<div class="item">Item 1</div>
+<div class="gggg">Item 2</div>
+<div class="item">Item 3</div>
+
+  
+<script>
+  const boxes = document.getElementsByClassName('box');
+  console.log(boxes); // Logs HTMLCollection of elements with class 'box'
+  console.log(boxes[0].innerText); // Logs 'Box 1'
+
+  const items = document.querySelectorAll('.item');
+  items.forEach(item => console.log(item.innerText)); // Logs 'Item 1', 'Item 2', 'Item 3'
+
+</script>
+
+</body>
+</html>

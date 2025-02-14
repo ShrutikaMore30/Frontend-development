@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <ul id="list">
+      <li>Item 1</li>
+      <li>Item 2</li>
+    </ul>
+
+    <script>
+      const list = document.getElementById('list');
+
+      // Create a new element
+      const newItem = document.createElement('li');
+      newItem.textContent = 'Item 3';
+
+      // Append the new element
+      list.appendChild(newItem);
+
+      // Remove an element
+      const firstItem = document.querySelector('li');
+      firstItem.remove();
+    </script>
+  </body>
+</html>

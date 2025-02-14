@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get content</title>
+</head>
+  <!-- Why Get Content?
+Even though you write HTML code and see the output directly in the browser, 
+sometimes you need to dynamically interact with and modify elements based on user input, events, or other conditions.
+ Here’s why retrieving and manipulating content can be helpful -->
+
+<div id="myDiv">This is <strong>my content.</strong></div>
+
+<div id="example3">Hello, <b>World!</b></div>
+
+<script>
+  const myDiv = document.getElementById('myDiv');
+  let content = myDiv.textContent;  // retrieve --> fetch or bring back text content
+  console.log(content);
+
+  let contentt = myDiv.innerHTML;  // Retrieves full HTML content
+  console.log(contentt);
+
+  
+
+  const el = document.getElementById('example3');
+
+  console.log(el.innerHTML);  // Output: "Hello, <b>World!</b>"
+  console.log(el.textContent); // plain text
+
+
+// Is initialization i.e let content necessary?
+
+// Not necessary unless you need to reuse the value later in your code.
+
+
+
+</script>
+
+<body>
+  
+</body>
+</html>

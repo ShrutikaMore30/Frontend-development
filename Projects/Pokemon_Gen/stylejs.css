@@ -1,0 +1,47 @@
+/* comment in css */
+/* .box{
+    width:300px;
+    height:300px;
+    background-color: black;
+    color:white;
+    display :flex;
+    align-items: center;
+
+} */
+
+body {
+  margin:0;
+  padding:0;
+  font-family: 'Arial', sans-serif;
+  background-color: #774f8e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.card {
+  background-color: #f2f2f2;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 300px;
+  text-align: center;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.card img {
+  width: 200px;
+  height: 200px;
+}
+
+.card h2 {
+  margin: 10px 0;
+  font-size: 24px;
+}
+
+.card p {
+  margin: 5px 0;
+  color: #333;
+}

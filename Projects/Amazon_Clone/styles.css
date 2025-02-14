@@ -1,0 +1,64 @@
+.navbar {
+    padding: 10px 20px;
+}
+
+.navbar-logo {
+    width: 120px;
+}
+
+.navbar-delivery {
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+.search-bar {
+    flex: 1;
+    max-width: 600px;
+}
+
+.search-category {
+    width: 100px;
+    border-radius: 0;
+}
+
+.search-input {
+    flex: 1;
+    border-radius: 0;
+}
+
+.search-btn {
+    border-radius: 0;
+}
+
+.navbar-right .cart-link {
+    position: relative;
+    font-size: 1.5rem;
+}
+
+.navbar-right .cart-count {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    font-size: 0.8rem;
+}
+
+.sub-navbar {
+    font-size: 0.85rem;
+}
+
+.hero-section {
+    background-image: url('hero.jpg');
+    height: 350px;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.hero-message {
+    background: black;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+}

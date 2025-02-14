@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1 id="title">Hello World</h1>
+    <p class="paragraph">this is the paragraph</p>
+    <p class="paragraph">this is second paragraph</p>
+    <div>
+      <span>This is inside a div.</span>
+    </div>
+
+    <script>
+      // Accessing an element by ID
+      const title = document.getElementById('title');
+      console.log(title.textContent); // Outputs: Hello World
+
+      // Accessing elements by class name
+      const paragraphs = document.getElementsByClassName('paragraph');
+      console.log(paragraphs); // Outputs: This is a paragraph.
+
+      // Accessing elements by tag name
+      const divs = document.getElementsByTagName('div');
+      console.log(divs[0].innerHTML); // Outputs: <span>This is inside a div.</span>
+
+      // Using querySelector to get the first matching element
+      const firstParagraph = document.querySelector('.paragraph');
+      console.log(firstParagraph.textContent); // Outputs: This is a paragraph. used for class
+
+      // Using querySelectorAll to get all matching elements ..used for class
+      const allParagraphs = document.querySelectorAll('.paragraph');
+      allParagraphs.forEach(p => console.log(p.textContent));
+    </script>
+  </body>
+</html>

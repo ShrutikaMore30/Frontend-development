@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inline Hover Effect with JS</title>
+  <style>
+    /* Default style */
+    #myTextarea {
+      width: 20%;
+      height: 50px;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Inline element for hover interaction -->
+  <textarea id="myTextarea" placeholder="Hover over this text area..."></textarea>
+
+  <script>
+    // JavaScript for hover effect
+    document.getElementById('myTextarea').addEventListener('mouseover', function() {
+      this.style.backgroundColor = 'lightgray';  // Change background color on hover
+    });
+
+    // Revert the background color on mouseout
+    document.getElementById('myTextarea').addEventListener('mouseout', function() {
+      this.style.backgroundColor = '';  // Revert background color
+    });
+  </script>
+
+</body>
+</html>

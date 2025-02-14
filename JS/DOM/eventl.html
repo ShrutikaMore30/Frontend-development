@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Listeners Example</title>
+</head>
+<body>
+
+  <!-- Input element for text -->
+  <input type="text" id="myInput" placeholder="Type something...">
+  <br/>
+
+  <!-- Form element -->
+  <form id="myForm">
+    <input type="text" name="name" placeholder="Your Name">
+    <br/>
+    <button type="submit">Submit</button>
+  </form>
+  <br/>
+
+  <!-- Dropdown menu -->
+  <select id="mySelect">
+    <option value="1">Option 1</option>
+    <option value="2">Option 2</option>
+    <option value="3">Option 3</option>
+  </select>
+  <br/>
+  <!-- Element for mouseover interaction -->
+  <div id="myDiv">Hover over me</div>
+
+  <script>
+    // Input event listener: Triggers when the user types something in the input field
+    document.getElementById('myInput').addEventListener('input', function() {
+      console.log('Input:', this.value);
+    });
+
+    document.getElementById('myForm').addEventListener('text', function() {
+      console.log('Input:', this.value);
+    });
+    // Submit event listener: Prevents form submission and logs a message
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevents default form submission
+      console.log('Form submitted');
+    });
+
+    // Change event listener: Tracks changes in dropdown/select elements
+    document.getElementById('mySelect').addEventListener('change', function() {
+      console.log('Selection changed:', this.value);
+    });
+
+    // Mouseover event listener: Changes background color on hover
+    document.getElementById('myDiv').addEventListener('mouseover', function() {
+      console.log('Mouse over element');
+    });
+
+    // Resize event listener: Detects when the window is resized
+    window.addEventListener('resize', function() {
+      console.log('Window resized');
+    });
+  </script>
+
+</body>
+</html>
+

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <button>Button A</button>
+    <br/>
+    <br/>
+    <button>Button B</button>
+    <br/>
+    <br/>
+    <button>Button C</button>
+
+    <script>
+      const buttons = document.querySelectorAll('button'); // Get all <button> elements as a NodeList
+
+      // Loop through the NodeList and add event listeners
+      buttons.forEach((button, index) => {
+        button.addEventListener('click', function () {
+          console.log(`Button ${String.fromCharCode(65 + index)} clicked!`);
+        });
+      });
+    </script>
+  </body>
+</html>

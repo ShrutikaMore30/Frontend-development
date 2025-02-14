@@ -1,0 +1,104 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.todo-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.input-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#taskInput {
+    width: 80%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#addButton {
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#addButton:hover {
+    background-color: #218838;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li {
+    background-color: #f8f9fa;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+li span {
+    flex-grow: 1;
+    padding: 0 10px;
+}
+
+button, .delete-icon {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.delete-icon {
+    color: #302a2b;
+    font-size: 20px;
+}
+
+.delete-icon:hover {
+    color: #2f2b2b;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: #6c757d;
+}
+
+.completed::before {
+    content: "\2714"; /* Check mark symbol */
+    color: #28a745;
+    margin-right: 10px;
+}
+
+.incomplete::before {
+    content: "\274C"; /* Cross symbol */
+    color: #dc3545;
+    margin-right: 10px;
+}

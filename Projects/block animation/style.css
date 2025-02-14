@@ -1,0 +1,35 @@
+div{
+    height:150px;
+    width:150px;
+    background-color: aqua;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    border:2px solid black;
+    position: absolute;
+    animation: moveSquare 10s infinite;
+}
+
+@keyframes moveSquare {
+    0% {
+        top: 0;
+        left: 0; /* Start at the top-left */
+    }
+    25% {
+        top: 0;
+        left: 85%; /* Move to the top-right..left pasun 85 % pudhe janar*/
+    }
+    50% {
+        top: 85%;
+        left: 85%; /* Move to the bottom-right */
+    }
+    75% {
+        top: 85%;
+        left: 0; /* Move to the bottom-left */
+    }
+    100% {
+        top: 0;
+        left: 0; /* Back to the top-left */
+    }
+}

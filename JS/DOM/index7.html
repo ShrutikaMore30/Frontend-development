@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <body>
+     <button id="clickMe">Click Me</button> 
+     <button class="clickIt">Click Me</button>
+     <button class="click this">Click Me</button>
+
+    <script>
+      const button = document.getElementById('clickMe');
+
+      button.addEventListener('click', function () { // Add an event listener
+        alert('button clicked !')
+      });
+    
+      // Access elements using correct classes
+      const button2 = document.querySelector('.clickIt'); // without space 
+      const button3 = document.querySelector('.click.this'); // with space
+
+      button2.addEventListener('click', function () {
+        console.log('Button clicked!');
+      });
+  
+      button3.addEventListener('click', function () {
+        console.log('Button clicked!');
+      });
+    </script>
+     
+  </body>
+</html>
+

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <a id="link" href="https://google.com">Google</a>
+
+    <script>
+      const link = document.getElementById('link');
+
+      // Change the href attribute
+      link.setAttribute('href', 'https://example.com');
+      console.log(link.getAttribute('href')); // Outputs: https://example.com
+
+      // Remove the href attribute
+      link.removeAttribute('href');
+    </script>
+  </body>
+</html>

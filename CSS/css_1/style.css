@@ -1,0 +1,62 @@
+/* 
+*{    
+    color :blue;
+}
+
+
+h1 {
+    color : red;
+}
+
+p{
+    color : blue;
+}
+
+button {
+    color  : rgb(44, 2, 60);
+}
+
+button {
+    background-color: aqua;
+}
+
+body {
+    background-color: #f3e9e9;
+}
+
+#great1{
+    color:darkred;
+}
+#great2{
+    color:rgb(0, 25, 139);
+}
+#great3{
+    color:#35981a;
+}
+.myclass{
+    color:magenta;
+} */
+
+/* level 1 Q.1 */
+
+#box{
+    color :antiquewhite;
+    background-color:blueviolet;
+}
+
+.heading{
+    color:brown;
+}
+
+p{
+     text-decoration:blue wavy underline;  /* none */
+    text-align: center;
+    font-size: 20px;
+    line-height: 25px;
+    text-transform: capitalize;
+
+}
+#h1{
+    font-weight: 800;
+    font-family: Arial;
+}
