@@ -22,11 +22,13 @@
     // JavaScript for hover effect
     document.getElementById('myTextarea').addEventListener('mouseover', function() {
       this.style.backgroundColor = 'lightgray';  // Change background color on hover
+      console.log("hover")
     });
 
     // Revert the background color on mouseout
     document.getElementById('myTextarea').addEventListener('mouseout', function() {
       this.style.backgroundColor = '';  // Revert background color
+      console.log('revert')
     });
   </script>
 
