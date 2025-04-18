@@ -1,6 +1,7 @@
 import { useState , useCallback,useEffect, useRef } from 'react'
 
 function App() {
+  //current state and updater function = initialization
   const [length, setLength] = useState(8)
   const [numAllowed, setNumAllowed]=useState(false)
   const [charAllowed, setCharAllowed]=useState(false)
@@ -10,7 +11,7 @@ function App() {
   const passwordRef=useRef(null) // reference 
 
 
-  const passwordGenerator = useCallback( ()=>{    //optimize
+  const passwordGenerator = useCallback( ()=>{    //optimization
    let pass=""
    let str= "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
    if(numAllowed) str += "0123456789"
@@ -20,20 +21,20 @@ function App() {
      let char=Math.floor(Math.random()*str.length + 1)
      pass += str.charAt(char)
    }
-
    setPassword(pass)
   
   }, [length,numAllowed,charAllowed,setPassword])
+  
 
   const copyPasswordToClipboard = useCallback(()=>{
-    passwordRef.current?.select();
+    passwordRef.current?.select();// ?. is the optional chaining operator 
     passwordRef.current?.setSelectionRange(0,100);
     window.navigator.clipboard.writeText(password)
   },[password])
 
   useEffect(()=>{ 
     passwordGenerator()
-  },[length,numAllowed,charAllowed,passwordGenerator])//isme kuch chnage hua to reaload hoga
+  },[numAllowed,charAllowed,passwordGenerator])//isme kuch chnage hua to reaload hoga
   return (
     <>
       <div className='w-full max-w-md mx-auto shadow-md rounded-lg px-4 py-3 my-8 text-orange-500 bg-gray-800'>

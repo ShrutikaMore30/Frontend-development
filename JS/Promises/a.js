@@ -1,33 +1,46 @@
-const cart =["shoes","kurta","top","pants"];
-//call back function
-createOrder(cart, function (orderId){// here we passing the function to another function
-    proceedToPayment(orderId, function (paymentInfo){
-        showOrderSummary(paymentInfo, function(){
-            updateWalletBalance()
+const cart = ["shoes", "kurta", "top", "pants"];
+
+function createOrder(cart, callback) {
+    console.log("Creating order...");
+    setTimeout(() => {
+        const orderId = "ORD12345"; // Simulated order ID
+        console.log("Order created with ID:", orderId);
+        callback(orderId);
+    }, 2000);
+}
+
+function proceedToPayment(orderId, callback) {
+    console.log("Processing payment for order:", orderId);
+    setTimeout(() => {
+        const paymentInfo = { status: "Success", amount: 500 };
+        console.log("Payment successful:", paymentInfo);
+        callback(paymentInfo);
+    }, 2000);
+}
+
+function showOrderSummary(paymentInfo, callback) {
+    console.log("Order Summary:", paymentInfo);
+    setTimeout(() => {
+        console.log("Order summary displayed.");
+        callback();
+    }, 1000);
+}
+
+function updateWalletBalance() {
+    console.log("Wallet balance updated!");
+}
+
+// Now calling the functions as per your code
+createOrder(cart, function (orderId) {
+    proceedToPayment(orderId, function (paymentInfo) {
+        showOrderSummary(paymentInfo, function () {
+            updateWalletBalance();
         });
-    });// creatOrder API would have called it whenever it wants to
+    });
 });
 
 
 
-// using then promise chaining
-createOrder(cart)
-  .then(function(orderId){
-     return proceedToPayment(orderId);
-   })
-  .then(function(paymentInfo){
-    return showOrderSummary(paymentInfo);
-   })
-  .then(function(paymentInfo){
-    return updateWalletBalance(paymentInfo);
-  });
- 
-// arrow function
-createOrder(cart)
-  .then(orderId => proceedToPayment(orderId))
-  .then(paymentInfo => showOrderSummary(paymentInfo))
-  .then(paymentInfo => updateWalletBalance(paymentInfo))
-  .catch((error) => console.error("An error occurred:", error));
 
 
 

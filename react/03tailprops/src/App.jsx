@@ -1,15 +1,8 @@
-import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
 import './App.css'
 import Card from "./Card"
 
-function App() {
-  const [count, setCount] = useState(0)
-  // let myObj={
-  //   username:"shruti",
-  //   age:21
-  // }
+function App() { //app is parent component
+ 
 
   return (
     <>
@@ -26,3 +19,8 @@ function App() {
 
 export default App
  
+//Parent Component: The component that calls/uses another component.
+
+//If a component is importing and using another component = Parent
+
+//"Importer is Parent, Imported is Child."
