@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {useDispatch} from 'react-redux'
-import authService from "./appWrite/auth"
+import authService from "./firebase/dbService"
 import {login, logout} from "./store/authSlice"
 import {Footer, Header} from './components'
 import {Outlet} from 'react-router-dom'

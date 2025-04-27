@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import appWriteService from "../appWrite/config";
+import appWriteService from "../firebase/config";
 import {Container, PostCard} from '../components'
 
 function Home() {

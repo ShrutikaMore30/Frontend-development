@@ -1,5 +1,5 @@
 import React from 'react'
-import appWriteService from "../appWrite/config"
+import appWriteService from "../firebase/config"
 import {Link} from 'react-router-dom'
 
 function PostCard({$id, title, featuredImage}){

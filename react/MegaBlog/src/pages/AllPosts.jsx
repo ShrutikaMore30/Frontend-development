@@ -1,6 +1,6 @@
 import React, {useState, useEffect}from 'react'
 import {Container, PostCard} from '../components'
-import appWriteService from "../appWrite/config";
+import appWriteService from "../firebase/config";
 
 function AllPosts(){
     const [posts, setPosts] = useState([])

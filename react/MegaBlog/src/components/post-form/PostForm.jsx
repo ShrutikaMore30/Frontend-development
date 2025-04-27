@@ -1,7 +1,7 @@
 import React, { useCallback, useState} from "react";
 import { useForm } from "react-hook-form";
 import { Button, Input, RTE, Select } from "..";
-import appWriteService from "../../appWrite/config";
+import appWriteService from "../../firebase/config";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
