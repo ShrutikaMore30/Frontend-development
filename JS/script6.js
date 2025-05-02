@@ -10,7 +10,7 @@ function createMultiplier(multiplier) {
     };
 }
 
-// Define operation functions
+// Define operation functions 
 const add = (x, y) => x + y;
 const multiply = (x, y) => x * y;
 

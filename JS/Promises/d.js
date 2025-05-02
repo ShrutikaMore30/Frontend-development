@@ -1,7 +1,7 @@
 //what is async await
 //How async await works behind the scenes ? examples
 //In older way js engine will not wait for promise to be resolved
-// but whwn we use async await
+// but then we use async await
 
 const p=new Promise((resolve, reject) =>{
    setTimeout(()=>{
@@ -19,7 +19,7 @@ async function handlePromise(){
 
      const val2=await p;
      console.log("Namaste JS 2");
-     console.log(val);
+     console.log(val2);
 }
 handlePromise();
 

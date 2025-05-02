@@ -1,15 +1,15 @@
-import React, { useCallback, useState} from "react";
+import React, { useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button, Input, RTE, Select } from "..";
-import appWriteService from "../../firebase/config";
+import firebaseService from "../../firebase/firebaseService"; // ✅ Correct import
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 export default function PostForm({ post }) {
-    const { register, handleSubmit, watch, setValue, control, getValues} = useForm({
+    const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
         defaultValues: {
             title: post?.title || "",
-            slug: post?.$id || "",
+            slug: post?.id || "",         // ✅ Corrected
             content: post?.content || "",
             status: post?.status || "active",
         },
@@ -20,44 +20,40 @@ export default function PostForm({ post }) {
     const [loading, setLoading] = useState(false);
 
     const submit = async (data) => {
-        setLoading(true); // Set loading to true
-        try{
-        if (post) {
-            const file = data.image[0] ? await appWriteService.uploadFile(data.image[0]) : null;
+        setLoading(true);
+        try {
+            if (post) {
+                const file = data.image?.[0] ? await firebaseService.uploadFile(data.image[0]) : null;
 
-            if (file && post?.featuredImage) {
-                await appWriteService.deleteFile(post.featuredImage);
-            }
+                if (file && post?.featuredImage) {
+                    await firebaseService.deleteFileFromUrl(post.featuredImage); // ✅ Corrected
+                }
 
-            const dbPost = await appWriteService.updatePost(post.$id, {
-                ...data,
-                featuredImage: file ? file.$id : post?.featuredImage,
-            });
+                await firebaseService.updatePost(post.id, {
+                    ...data,
+                    featuredImage: file ? file : post.featuredImage,
+                });
 
-            if (dbPost) {
-                navigate(`/post/${dbPost.$id}`);
-            }
-        } else {
-            const file = data.image?.[0] ? await appWriteService.uploadFile(data.image[0]) : null;
+                navigate(`/post/${post.id}`); // ✅ Corrected
+            } else {
+                const file = data.image?.[0] ? await firebaseService.uploadFile(data.image[0]) : null;
 
-            if (file) {
-                const fileId = file.$id;
-                data.featuredImage = fileId;
-                const dbPost = await appWriteService.createPost({ ...data, userId: userData.$id });
+                if (file) {
+                    data.featuredImage = file;
+                    const dbPost = await firebaseService.createPost({ ...data, userId: userData.uid });
 
-                if (dbPost) {
-                    navigate(`/post/${dbPost.$id}`);
+                    if (dbPost) {
+                        navigate(`/post/${dbPost.id}`); // ✅ Corrected
+                    }
                 }
             }
+        } catch (error) {
+            console.error("Error submitting post:", error);
+            alert("An error occurred. Please try again.");
+        } finally {
+            setLoading(false);
         }
-       
-    } catch (error) {
-        console.error("Error submitting post:", error);
-        alert("An error occurred. Please try again."); // Display error message
-    } finally {
-        setLoading(false); // Set loading to false
-    }
-};
+    };
 
     const slugTransform = useCallback((value) => {
         if (value && typeof value === "string")
@@ -108,10 +104,10 @@ export default function PostForm({ post }) {
                     accept="image/png, image/jpg, image/jpeg, image/gif"
                     {...register("image", { required: !post })}
                 />
-                {post && post.featuredImage &&(
+                {post && post.featuredImage && (
                     <div className="w-full mb-4">
                         <img
-                            src={appWriteService.getFilePreview(post.featuredImage)}
+                            src={post.featuredImage}
                             alt={post.title}
                             className="rounded-lg"
                         />
@@ -124,7 +120,7 @@ export default function PostForm({ post }) {
                     {...register("status", { required: true })}
                 />
                 <Button type="submit" bgColor={post ? "bg-green-500" : undefined} className="w-full" disabled={loading}>
-                   {loading ? "Loading..." : post ? "Update" : "Submit"} {/* Show loading message */}
+                    {loading ? "Loading..." : post ? "Update" : "Submit"}
                 </Button>
             </div>
         </form>

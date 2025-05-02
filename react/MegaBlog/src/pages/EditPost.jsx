@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import {Container, PostForm} from '../components'
-import appWriteService from "../firebase/config"
+import firebaseService from "../firebase/firebaseService"
 import {useNavigate, useParams} from 'react-router-dom'
 
 function EditPost(){
@@ -10,7 +10,7 @@ function EditPost(){
 
        useEffect(() =>{
         if(slug){
-            appWriteService.getPost(slug).then((post)=>{
+            firebaseService.getPost(slug).then((post)=>{
                 if(post){
                     setPosts(post)
                 }

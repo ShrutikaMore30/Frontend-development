@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import {login as authLogin} from '../store/authSlice'
 import {Button, Input, Logo} from "./index"
-import authService from "../firebase/dbService"
+import authService from "../firebase/firebaseService"
 import {useForm} from "react-hook-form"
 import { useDispatch } from "react-redux";  
 
@@ -16,11 +16,22 @@ function Login(){
         setError("")
         try{
             const session = await authService.login(data)
-            if(session){
-                const userData =await authService.getCurrentUser()
-                if(userData) dispatch(authLogin(userData));
-                navigate("/")
+            if (session) {
+                const userData = await authService.getCurrentUser();
+            
+                if (userData) {
+                    const cleanedUserData = {
+                        uid: userData.uid,
+                        email: userData.email,
+                        displayName: userData.displayName,
+                        photoURL: userData.photoURL,
+                    };
+                    dispatch(authLogin(cleanedUserData)); // ✅ This is fine
+                }
+            
+                navigate("/");
             }
+            
         }catch(error){
             setError(error.message)
         }

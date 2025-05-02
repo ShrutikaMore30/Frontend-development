@@ -13,6 +13,7 @@
   
 
 // //Simulating an asynchronous task using setTimeout
+
 // function fetchData() {
 //     return new Promise((resolve) => {
 //       setTimeout(() => {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import appWriteService from "../firebase/config";
+import firebaseService from "../firebase/firebaseService";
 import { Button, Container } from "../components";
 import parse from "html-react-parser";
 import { useSelector } from "react-redux";
@@ -16,7 +16,7 @@ export default function Post() {
 
     useEffect(() => {
         if (slug) {
-            appWriteService.getPost(slug).then((post) => {
+            firebaseService.getPost(slug).then((post) => {
                 if (post) setPost(post);
                 else navigate("/");
             });
@@ -24,9 +24,9 @@ export default function Post() {
     }, [slug, navigate]);
 
     const deletePost = () => {
-        appWriteService.deletePost(post.$id).then((status) => {
+        firebaseService.deletePost(post.$id).then((status) => {
             if (status) {
-                appWriteService.deleteFile(post.featuredImage);
+                firebaseService.deleteFileFromUrl(post.featuredImage);
                 navigate("/");
             }
         });

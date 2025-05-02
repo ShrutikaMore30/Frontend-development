@@ -1,6 +1,6 @@
 import React, {useState, useEffect}from 'react'
 import {Container, PostCard} from '../components'
-import appWriteService from "../firebase/config";
+import firebaseService from "../firebase/firebaseService";
 
 function AllPosts(){
     const [posts, setPosts] = useState([])
@@ -11,9 +11,9 @@ function AllPosts(){
     //     }
     // })
     useEffect(()=>{
-        appWriteService.getPosts().then((posts) => {
+        firebaseService.getPosts().then((posts) => {
             if(posts){
-                setPosts(posts.documents)
+                setPosts(posts)
             }
         })
     },[])
