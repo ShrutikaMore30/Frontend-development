@@ -4,6 +4,8 @@ import { Button, Input, RTE, Select } from "..";
 import firebaseService from "../../firebase/firebaseService"; // ✅ Correct import
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { uploadImageToCloudinary } from "../../cloudinary/cloudinaryService";
+
 
 export default function PostForm({ post }) {
     const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
@@ -17,13 +19,20 @@ export default function PostForm({ post }) {
 
     const navigate = useNavigate();
     const userData = useSelector((state) => state.auth.userData);
+    // if (!userData || !userData.uid) {
+    //     alert("User not authenticated!");
+    //     return;
+    //   }
+
+      //kuch console.log(userData); 
     const [loading, setLoading] = useState(false);
 
     const submit = async (data) => {
         setLoading(true);
         try {
             if (post) {
-                const file = data.image?.[0] ? await firebaseService.uploadFile(data.image[0]) : null;
+                const file = data.image?.[0] ? await uploadFileToCloudinary(data.image[0]) : null; // yaha change kiya
+
 
                 if (file && post?.featuredImage) {
                     await firebaseService.deleteFileFromUrl(post.featuredImage); // ✅ Corrected
@@ -36,7 +45,7 @@ export default function PostForm({ post }) {
 
                 navigate(`/post/${post.id}`); // ✅ Corrected
             } else {
-                const file = data.image?.[0] ? await firebaseService.uploadFile(data.image[0]) : null;
+                const file = data.image?.[0] ? await uploadImageToCloudinary(data.image[0]) : null;
 
                 if (file) {
                     data.featuredImage = file;

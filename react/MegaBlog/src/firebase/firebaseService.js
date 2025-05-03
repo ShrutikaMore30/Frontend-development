@@ -116,6 +116,22 @@ class FirebaseService {
     const fileRef = ref(storage, fileUrl);
     await deleteObject(fileRef);
   }
+// this is added for image storing
+  async uploadFileToCloudinary(file) {
+    const data = new FormData();
+    data.append("file", file);
+    data.append("upload_preset", "your_upload_preset"); // ⚠️ Replace with your Cloudinary preset
+    data.append("cloud_name", "your_cloud_name");       // ⚠️ Replace with your Cloudinary cloud name
+  
+    const res = await fetch("https://api.cloudinary.com/v1_1/your_cloud_name/image/upload", {
+      method: "POST",
+      body: data,
+    });
+  
+    const result = await res.json();
+    return result.secure_url; // ✅ This is what we use as featuredImage
+  }
+  
 }
 
 const firebaseService = new FirebaseService();
